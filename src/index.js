@@ -44,12 +44,8 @@ const fetchComment = async (id) => {
   }
 };
 
-
 const links = document.getElementById('links');
-
-
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
 
 alphabet.split('').forEach((a) => {
   links.innerHTML += ` <button type="button" id="${a}">${a}</button>`;
@@ -82,7 +78,6 @@ const commentsPopup = async (meal) => {
   document.getElementById('close').addEventListener('click', () => {
     main.removeChild(popupDiv);
   });
-
 
   document.getElementById('post-comment').addEventListener('click', (e) => {
     e.preventDefault();

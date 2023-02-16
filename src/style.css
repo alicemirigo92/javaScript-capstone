@@ -1,6 +1,9 @@
+body {
+  background-color: rgb(1, 1, 27);
+}
 .nav-bar {
-  background-color: #a7afad;
-  color: #17eadc;
+  background-color: rgb(13, 79, 27);
+  color: #0b0b0b;
   display: flex;
   height: 5rem;
   justify-content: space-between;
@@ -17,23 +20,28 @@
   list-style-type: none;
   display: flex;
   gap: 2rem;
+  color: #0b0b0b;
 }
 
 .li-items:hover {
   background-color: #de5313;
-  color: #122f59;
+  color: #18191a;
   padding: 0 4px;
 }
 
 #meals {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 8px;
+  gap: 15px;
   padding: 20px;
 }
 
 .meal {
-  height: 42vh;
+  height: 62vh;
+  width: 100%;
+  background-size: cover;
+  vertical-align: middle;
+  box-sizing: border-box;
 }
 
 .meal-image {
@@ -41,39 +49,63 @@
   width: 100%;
   position: relative;
   background-size: cover;
+  vertical-align: middle;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  background-color: var(--Dark-Blue);
+  box-shadow: 5px 5px 10px rgb(43 73 100);
+  border: 1px solid rgb(85, 120, 150);
 }
 
 .meal-name {
   position: absolute;
   right: 0;
-  bottom: 0;
+  margin: 100px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-top: 25rem;
+  color: aliceblue;
 }
 
 .involvement {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  color: grey;
-  background-color: #9c9aa2;
+  margin-top: 16px;
+  color: rgb(225, 201, 40);
+  background-color: white;
+  background-color: rgb(31, 57, 23);
+  margin-top: 70px;
+  box-shadow: 5px 5px 10px rgb(43 73 100);
+  border: 1px solid rgb(85, 120, 150);
+}
+
+button {
+font-weight: bolder;
+font-size: x-large;
+background-color: #30816c;
 }
 
 .popup {
-  position: fixed;
-  top: 2%;
-  left: 15%;
-  height: 70vh;
-  width: 60vw;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #30816c;
+  overflow-y: auto;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(15, 80, 108);
+    z-index: 1;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 1rem auto;
 }
 
 .popup-image {
-  width: 80%;
-  height: 50vh;
+  width: 90%;
+  height: 50%;
+  object-fit: fill;
   background-size: cover;
 }
 
@@ -81,17 +113,22 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
 }
 
 #links {
   display: flex;
   justify-content: center;
+  color: #30816c;
+  gap: 16px;
 }
 
 footer {
-  background-color: rebeccapurple;
   color: white;
-
+  background-color: rgb(31, 57, 23);
   /* position: absolute; */
   height: 3rem;
   width: 100%;
@@ -100,9 +137,10 @@ footer {
   padding: 20px 0;
 }
 
-/* #close {
-  display: flex;
-  justify-content: end;
-  align-items: end;
-  border: 1px solid red;
-} */
+#close {
+  cursor: pointer;
+  margin-bottom: 16px;
+  padding-left: 0;
+  float: right;
+  font-size: large;
+} 
