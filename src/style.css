@@ -1,8 +1,16 @@
+html {
+  font-size: 62.5%;
+}
+
+
 body {
+  font-size: 1.6rem;
   background-color: rgb(1, 1, 27);
 }
+
+
 .nav-bar {
-  background-color: rgb(13, 79, 27);
+  background-color: #30816c;
   color: #0b0b0b;
   display: flex;
   height: 5rem;
@@ -11,10 +19,12 @@ body {
   padding: 0 30px;
 }
 
+
 #logo {
   height: 50px;
   width: 120px;
 }
+
 
 .nav-list {
   list-style-type: none;
@@ -23,11 +33,13 @@ body {
   color: #0b0b0b;
 }
 
+
 .li-items:hover {
   background-color: #de5313;
   color: #18191a;
   padding: 0 4px;
 }
+
 
 #meals {
   display: grid;
@@ -36,71 +48,86 @@ body {
   padding: 20px;
 }
 
+
 .meal {
-  height: 62vh;
+  border-radius: 0.5rem;
+  height: 55vh;
   width: 100%;
-  background-size: cover;
-  vertical-align: middle;
   box-sizing: border-box;
+  box-shadow: 5px 5px 10px rgb(43 73 100);
+  border: 1px solid rgb(85, 120, 150);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+
 .meal-image {
+  border-radius: 0.5rem;
   height: 69%;
   width: 100%;
   position: relative;
   background-size: cover;
-  vertical-align: middle;
-  box-sizing: border-box;
-  border-radius: 0.5rem;
-  background-color: var(--Dark-Blue);
-  box-shadow: 5px 5px 10px rgb(43 73 100);
-  border: 1px solid rgb(85, 120, 150);
 }
 
+
+.meal-details {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  margin: 7px;
+}
+
+
 .meal-name {
-  position: absolute;
-  right: 0;
-  margin: 100px;
-  font-size: 1.1rem;
+  font-size: 1.6rem;
   font-weight: 800;
-  margin-top: 25rem;
   color: aliceblue;
 }
 
+
 .involvement {
   display: flex;
-  justify-content: space-around;
-  width: 100%;
-  margin-top: 16px;
-  color: rgb(225, 201, 40);
-  background-color: white;
   background-color: rgb(31, 57, 23);
-  margin-top: 70px;
   box-shadow: 5px 5px 10px rgb(43 73 100);
   border: 1px solid rgb(85, 120, 150);
 }
 
-button {
-font-weight: bolder;
-font-size: x-large;
-background-color: #30816c;
+
+.bi-heart-fill {
+  font-size: 23px;
 }
+
+
+.involvement button {
+  font-weight: bolder;
+  font-size: 1.6rem;
+  padding: 1.3rem;
+  background-color: #30816c;
+  border: none;
+  width: 100%;
+}
+
 
 .popup {
   overflow-y: auto;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgb(15, 80, 108);
-    z-index: 1;
-    padding: 1rem;
-    border-radius: 1rem;
-    width: 100%;
-    max-width: 600px;
-    margin: 1rem auto;
+  overflow-x: hidden;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(15, 80, 108);
+  z-index: 1;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 1rem auto;
+  scrollbar-color: rgb(255, 255, 255) #1d1d1d00;
+  scrollbar-width: thin;
 }
+
 
 .popup-image {
   width: 90%;
@@ -108,6 +135,7 @@ background-color: #30816c;
   object-fit: fill;
   background-size: cover;
 }
+
 
 .popup form {
   display: flex;
@@ -119,6 +147,7 @@ background-color: #30816c;
   border-radius: 1rem;
 }
 
+
 #links {
   display: flex;
   justify-content: center;
@@ -126,9 +155,12 @@ background-color: #30816c;
   gap: 16px;
 }
 
+
 footer {
   color: white;
-  background-color: rgb(31, 57, 23);
+  background-color: #30816c;
+
+
   /* position: absolute; */
   height: 3rem;
   width: 100%;
@@ -137,10 +169,11 @@ footer {
   padding: 20px 0;
 }
 
+
 #close {
   cursor: pointer;
   margin-bottom: 16px;
   padding-left: 0;
   float: right;
   font-size: large;
-} 
+}
