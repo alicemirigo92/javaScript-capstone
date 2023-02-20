@@ -1,0 +1,179 @@
+html {
+  font-size: 62.5%;
+}
+
+
+body {
+  font-size: 1.6rem;
+  background-color: rgb(1, 1, 27);
+}
+
+
+.nav-bar {
+  background-color: #30816c;
+  color: #0b0b0b;
+  display: flex;
+  height: 5rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+
+
+#logo {
+  height: 50px;
+  width: 120px;
+}
+
+
+.nav-list {
+  list-style-type: none;
+  display: flex;
+  gap: 2rem;
+  color: #0b0b0b;
+}
+
+
+.li-items:hover {
+  background-color: #de5313;
+  color: #18191a;
+  padding: 0 4px;
+}
+
+
+#meals {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 15px;
+  padding: 20px;
+}
+
+
+.meal {
+  border-radius: 0.5rem;
+  height: 55vh;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 5px 5px 10px rgb(43 73 100);
+  border: 1px solid rgb(85, 120, 150);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.meal-image {
+  border-radius: 0.5rem;
+  height: 69%;
+  width: 100%;
+  position: relative;
+  background-size: cover;
+}
+
+
+.meal-details {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  margin: 7px;
+}
+
+
+.meal-name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: aliceblue;
+}
+
+
+.involvement {
+  display: flex;
+  background-color: rgb(31, 57, 23);
+  box-shadow: 5px 5px 10px rgb(43 73 100);
+  border: 1px solid rgb(85, 120, 150);
+}
+
+
+.bi-heart-fill {
+  font-size: 23px;
+}
+
+
+.involvement button {
+  font-weight: bolder;
+  font-size: 1.6rem;
+  padding: 1.3rem;
+  background-color: #30816c;
+  border: none;
+  width: 100%;
+}
+
+
+.popup {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(15, 80, 108);
+  z-index: 1;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 1rem auto;
+  scrollbar-color: rgb(255, 255, 255) #1d1d1d00;
+  scrollbar-width: thin;
+}
+
+
+.popup-image {
+  width: 90%;
+  height: 50%;
+  object-fit: fill;
+  background-size: cover;
+}
+
+
+.popup form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+}
+
+
+#links {
+  display: flex;
+  justify-content: center;
+  color: #30816c;
+  gap: 16px;
+}
+
+
+footer {
+  color: white;
+  background-color: #30816c;
+
+
+  /* position: absolute; */
+  height: 3rem;
+  width: 100%;
+  text-align: center;
+  align-content: center;
+  padding: 20px 0;
+}
+
+
+#close {
+  cursor: pointer;
+  margin-bottom: 16px;
+  padding-left: 0;
+  float: right;
+  font-size: large;
+}
