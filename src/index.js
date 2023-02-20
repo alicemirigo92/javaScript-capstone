@@ -1,4 +1,9 @@
 import './style.css';
+import fetchLikes from './modules/fetchLikes.js';
+import addLikes from './modules/addLikes.js';
+import mealCount from './modules/mealCount.js';
+import postComment from './modules/postcomments.js';
+import displayComments from './modules/displayComments';
 
 const BASE_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps';
 const APP_ID = 'MQomAQGD2c0JHxU5tUHT';
@@ -13,53 +18,8 @@ const fetchMeals = async (l) => {
   }
 };
 
-const postLikes = async (like) => {
-  await fetch(`${BASE_URL}/${APP_ID}/likes`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(like),
-  });
-};
-
-const fetchLikes = async () => {
-  try {
-    const response = await fetch(`${BASE_URL}/${APP_ID}/likes`);
-    if (response.ok) {
-      const data = response.json();
-      return data;
-    }
-    return [];
-  } catch (err) {
-    return err;
-  }
-};
-
-const postComment = async (comment) => {
-  await fetch(`${BASE_URL}/${APP_ID}/comments`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(comment),
-  });
-};
-
-const fetchComment = async (id) => {
-  try {
-    const response = await fetch(`${BASE_URL}/${APP_ID}/comments?item_id=${id}`);
-    if (response.ok) {
-      const data = response.json();
-      return data;
-    }
-    return [];
-  } catch (err) {
-    return err;
-  }
-};
-
 const links = document.getElementById('links');
+
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 alphabet.split('').forEach((a) => {
@@ -74,17 +34,18 @@ const commentsPopup = async (meal) => {
   popupDiv.innerHTML = `
   <button type="button" id="close">&times;</button>
   <div class="popup-image" style="background-image: url(${meal.strMealThumb});"></div>
-	<ul>
-  	<li>${meal.strMeal}</li>
-  	<li>${meal.strCategory}</li>
-  	<li>${meal.strArea}</li>
- 	</ul>
-    
-	<ul id="all-comments"></ul>
+    <ul id="horiz-name">
+      <li>${meal.strMeal}</li>
+      <li>${meal.strCategory}</li>
+      <li>${meal.strArea}</li>
+     </ul>
+     <h3 id="c-count">Comments(<span id="c-total"></span>)</h3>
+    <ul id="all-comments"></ul>
   <form id="comment-form">
-	<input type="text" id="username" placeholder="username" name="username" required>
-	<textarea name="comment" id="comment" placeholder="Enter your comment..." cols="30" rows="4" required></textarea>
-	<button type="button" id="post-comment">Comment</button>
+  <h3>Add a comments</h3>
+  <input type="text" id="username" placeholder="username" name="username" required>
+  <textarea name="comment" id="comment" placeholder="Enter your comment..." cols="30" rows="4" required></textarea>
+  <button type="button" id="post-comment">Comment</button>
   </form>`;
   main.append(popupDiv);
 
@@ -108,12 +69,9 @@ const commentsPopup = async (meal) => {
       postComment({ item_id, username, comment });
       document.queryselector('form').reset();
     }
-  });
 
-  const comments = await fetchComment(meal.idMeal);
-  comments.forEach((c) => {
-    document.getElementById('all-comments').innerHTML += `<li>${c.creation_date} ${c.username}: ${c.comment}</li>`;
   });
+  displayComments(meal.idMeal);
 };
 
 const mealsSection = document.getElementById('meals');
@@ -122,11 +80,10 @@ const showMeals = async (meals) => {
   const likes = await fetchLikes();
 
   if (!meals) {
-    document.querySelector('.foods-no').textContent = 'All foods(0)';
+    document.querySelector('#num').textContent = 'Menu (0)';
     mealsSection.innerHTML = '<p>No meals available starting with that letter</p>';
     return;
   }
-  document.querySelector('.foods-no').textContent = `All foods(${meals.length})`;
   meals.forEach((meal) => {
     const like = likes.find((l) => l.item_id === meal.idMeal);
 
@@ -139,7 +96,7 @@ const showMeals = async (meals) => {
       	<p class="meal-name">${meal.strMeal}</p>
       	<p class="likes">
         	<i class="bi bi-heart-fill" id="l${meal.idMeal}" type="button"></i>
-        	<span class="likes-count">${like ? like.likes : 0}</span>
+        	<span class="likes-count">${like ? like.likes : 0}</span> Likes
       	</p>
     	</div>
     	<div class="involvement">
@@ -152,20 +109,22 @@ const showMeals = async (meals) => {
     });
 
     document.getElementById(`l${meal.idMeal}`).addEventListener('click', () => {
-      postLikes({ item_id: meal.idMeal });
+      addLikes({ item_id: meal.idMeal });
       let num = +document.getElementById(`l${meal.idMeal}`).nextSibling.nextSibling.textContent;
       num += 1;
       document.getElementById(`l${meal.idMeal}`).nextSibling.nextSibling.textContent = num;
     });
   });
+
+  const num = document.querySelector('.total');
+  const wrapper = document.querySelector('#meals');
+  mealCount(wrapper, num);
 };
 
 const displayMeals = async () => {
   let letter = 's';
   const meals = await fetchMeals(letter);
-
   showMeals(meals);
-
   document.querySelectorAll('#links button').forEach((l) => {
     l.addEventListener('click', async (e) => {
       document.getElementById('meals').innerHTML = '';
